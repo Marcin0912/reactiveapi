@@ -15,7 +15,7 @@ export class ReservationService {
 
     createReservation(body: ReservationRequest): Observable<Reservation> {
         let httpOptions = {
-          headers: new HttpHeaders({'Content-Type': 'application/json'}),
+          headers: new HttpHeaders({'Content-Type': 'application/json'})
         }
 
         return this.http.post<Reservation>(this.reservationUrl, body, httpOptions);
