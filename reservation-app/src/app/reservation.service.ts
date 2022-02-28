@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Data } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,10 @@ export class ReservationService {
     private baseUrl:string = 'http://localhost:8080';
 
     private reservationUrl:string = this.baseUrl + '/room/v1/reservation/';
+
+    getReservations(): Observable<Reservation[]> {
+      return this.http.get<Reservation[]>(this.reservationUrl);
+    }
 
     createReservation(body: ReservationRequest): Observable<Reservation> {
         let httpOptions = {
@@ -43,7 +48,7 @@ export class ReservationRequest {
 export interface Reservation {
   id: string;
   roomNumber: number;
-  checkIn: Date;
-  checkOut: Date;
+  checkIn: Data;
+  checkOut: Data;
   price:number;
 }
