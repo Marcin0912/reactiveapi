@@ -1,0 +1,5 @@
+users-url: http://localhost:8081/users
+spring:
+  security:
+    user:
+      password: password
